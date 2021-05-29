@@ -22,7 +22,7 @@ import java.util.Properties;
 public class PropertiesDBTest {
 	public static void main(String[] args)throws Exception{
 		Properties p = new Properties();
-		p.load(new FileInputStream("/Users/ck/git/study_jdbc/n02_jdbc_conn/src/config/db.properties"));
+		p.load(new FileInputStream("/Users/ck/git/study_jdbc/n02_jdbc_conn/src/config/dbinfo.properties"));
 
 		String driverName = p.getProperty("jdbc.oracle.driver");
 		String url = p.getProperty("jdbc.oracle.url");
