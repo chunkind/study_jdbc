@@ -1,0 +1,55 @@
+==== 이미 만들어져 있는 계정의 lock 해제하기 =====
+sqlplus system/kosta
+sql>alter user hr account unlock;
+sql>alter user hr identified by hr;
+
+==== 계정 생성과 권한 부여하기 ====
+sql>conn system/kosta
+sql>create user scott identified by tiger;
+    계정이 생성되었습니다.
+sql>grant connect, resource, dba to scott;
+sql>conn scott/tiger
+    연결되었습니다
+sql>show user
+    USER는 "SCOTT"입니다
+
+========= 테이블 생성하고 데이타 추가하기 ================
+CREATE TABLE member(
+    id varchar2(20),
+    name varchar2(30),
+    age number(3)
+);
+
+INSERT INTO member (id, name, age) VALUES('kim','김제동',40);
+INSERT INTO member VALUES('lee','이경규',53);
+commit; //이부분 반드시...
+ 
+sql>ed member.sql
+    새로 만드시겠습니까? yes...새로운 메모장을 만든다.> 저장> 닫는다
+sql>@member.sql
+    테이블이 생성되었습니다.
+    1개의 행이 만드어졌습니다.
+    1개의 행이 만드어졌습니다.
+          
+=================== commit 에 관하여 ==============================
+1. 프로그램상에서 sql (insert)문을 작성하고 실행한 것은 --- 자동 commit 된다.
+   콘솔창에서 sql> insert into ~~  실행한것은 ---- 자동 commit 안된다.
+           sql> commit; //이부분을 해줘야 데이타가 반영된다.
+2. DDL 문장은 자동 commit 된다
+   DML 문장은 자동 commit 안된다..별도로 해줘야 한다.
+   
+=============== 기본키를 설정해서 테이블 생성 ========================
+varchar2는 가변형 문자데이타로(String) 최대 크기는 400바이트
+
+CREATE TABLE member (
+    id varchar2(20) primary key,
+    name varchar2(30) not null,
+    pass varchar2(30) not null,
+    tel varchar2(20) not null
+);
+     
+테이블의 구조를 알아봄 : desc member
+테이블에 컬럼을 추가 : ALTER TABLE member ADD(컬러명 타입);
+테이블에 걸럼의 속성을 변경 :
+테이블에 컬럼명을 변경 :
+테이블에 컬럼을 삭제 :
