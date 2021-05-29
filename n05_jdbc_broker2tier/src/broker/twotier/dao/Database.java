@@ -118,7 +118,7 @@ public class Database {
 	public Vector<SharesRec> getPortfolio(String ssn)throws SQLException,RecordNotFoundException{
 		Connection conn = null;
 		PreparedStatement ps=  null;
-		ResultSet rs=  null;
+		ResultSet rs = null;
 		Vector<SharesRec> v = new Vector<SharesRec>();
 		try{
 			conn = getConn();

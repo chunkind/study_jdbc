@@ -39,6 +39,38 @@ insert into customer values( '111-116', 'Yufirst6', 'Seoul');
 insert into customer values( '111-117', 'Yufirst7', 'Seoul');
 insert into customer values( '111-118', 'Yufirst8', 'Seoul');
 insert into customer values( '111-119', 'Yufirst9', 'Seoul');
+
+insert into shares values('111-111', 'SUNW', 2);
+insert into shares values('111-111', 'DUKE', 5);
+insert into shares values('111-111', 'JDK', 5);
+insert into shares values('111-112', 'BWInc', 10);
+insert into shares values('111-112', 'PMLtd', 2);
+insert into shares values('111-112', 'TMAs', 9);
+insert into shares values('111-112', 'CyAs', 8);
+insert into shares values('111-113', 'DUKE', 8);
+insert into shares values('111-113', 'ABStk', 15);
+insert into shares values('111-113', 'JSVco', 19);
+insert into shares values('111-113', 'TMAs', 1);
+insert into shares values('111-114', 'BWInc', 3);
+insert into shares values('111-114', 'GMEnt', 60);
+insert into shares values('111-115', 'DUKE', 1);
+insert into shares values('111-116', 'GMEnt', 22);
+insert into shares values('111-116', 'PMLtd', 13);
+insert into shares values('111-116', 'SUNW', 8);
+insert into shares values('111-116', 'BWInc', 33);
+insert into shares values('111-116', 'DUKE', 22);
+insert into shares values('111-117', 'SUNW', 2);
+insert into shares values('111-117', 'ABStk', 4);
+insert into shares values('111-117', 'TMAs', 5);
+insert into shares values('111-117', 'BWInc', 10);
+insert into shares values('111-117', 'GMEnt', 3);
+insert into shares values('111-117', 'PMLtd', 4);
+insert into shares values('111-117', 'JDK', 5);
+insert into shares values('111-118', 'JSVco', 3);
+insert into shares values('111-118', 'JDK', 2);
+insert into shares values('111-119', 'BWInc', 4);
+insert into shares values('111-119', 'GMEnt', 9);
+insert into shares values('111-119', 'ABStk', 8);
 commit;
 
 

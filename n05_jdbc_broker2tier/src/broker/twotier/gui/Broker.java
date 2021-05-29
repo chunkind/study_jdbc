@@ -34,33 +34,30 @@ public class Broker implements ActionListener,ItemListener{
 	private static final int ADD_MODE = 1;
 	private static final int UPDATE_MODE = 2;
 
-	Database 		db;
+	Database db;
 
-	Frame 	frame =new Frame("ABC Stock");
+	Frame frame =new Frame("ABC Stock");
 
 	//*************컴포넌트 선언...생성 ************************
     //*******************************************************
-	Panel 	pc =new Panel();
-	Panel 	pe =new Panel();
-	
-	Panel 	   pec	=new Panel();
-	Panel 	   pes	=new Panel();	
-	
-	
-	Panel 	   pcn	=new Panel();
-	Panel 	   pcc	=new Panel();
-	Panel 	   pcw	=new Panel();
-	Panel 	   pcs	=new Panel();
-	
+	Panel pc = new Panel();
+	Panel pe = new Panel();
 
-	Panel 		pcn1	=new Panel();
-	Panel 		pcc1	=new Panel();
-	Panel 		pcc2	=new Panel();
-	
-	Panel 		pcwn	=new Panel();
-	Panel 		pcws	=new Panel();
-	Panel 		pcwa	=new Panel();
-	
+	Panel pec = new Panel();
+	Panel pes = new Panel();
+
+	Panel pcn = new Panel();
+	Panel pcc = new Panel();
+	Panel pcw = new Panel();
+	Panel pcs = new Panel();
+
+	Panel pcn1 = new Panel();
+	Panel pcc1 = new Panel();
+	Panel pcc2 = new Panel();
+
+	Panel pcwn = new Panel();
+	Panel pcws = new Panel();
+	Panel pcwa = new Panel();
 
 	TextField nameTf	= new TextField(15);
 	TextField ssnTf		= new TextField(15);
@@ -69,7 +66,7 @@ public class Broker implements ActionListener,ItemListener{
 	TextField priceTf	= new TextField(15);
 	TextField sellTf	= new TextField(15);
 
-	TextArea addrTa	= new TextArea(3,15);
+	TextArea addrTa		= new TextArea(3,15);
 
 	List 	custList	= new List(15, false);
 	List 	stockList	= new List(15, false);
@@ -239,9 +236,9 @@ public class Broker implements ActionListener,ItemListener{
 
 	// name, ssn, address  TextField의 편집상태를 바꾼다
 	public void textEditable(boolean b)	{
-		nameTf.setEditable	(b);
-		ssnTf.setEditable	(b);
-		addrTa.setEditable	(b);
+		nameTf.setEditable(b);
+		ssnTf.setEditable(b);
+		addrTa.setEditable(b);
 	}
 
 	//ssn, name, address의 TextFiled 값을 clear 시킨다.
@@ -279,8 +276,8 @@ public class Broker implements ActionListener,ItemListener{
 		list.setForeground(Color.YELLOW);
 		for(int i=0; i<sr.size(); i++){
 			String symbol = sr.get(i).getSymbol();
-			float price=  sr.get(i).getPrice();
-			list.add(symbol +"  "+price);
+			float price = sr.get(i).getPrice();
+			list.add(symbol + " " + price);
 		}
 	}
 
@@ -295,7 +292,7 @@ public class Broker implements ActionListener,ItemListener{
 			SharesRec sr = (SharesRec)portfolio.get(i);
 			String symbol = sr.getSymbol();
 			int quantity = sr.getQuantity();
-			list.add(symbol+" "+quantity);
+			list.add(symbol + " " + quantity);
 		}
 	}
 
@@ -316,7 +313,7 @@ public class Broker implements ActionListener,ItemListener{
 			nameTf.setText(cr.getName());
 			ssnTf.setText(cr.getSsn());
 			addrTa.setText(cr.getAddress());
-			Vector<SharesRec> v=cr.getPortfolio();
+			Vector<SharesRec> v = cr.getPortfolio();
 			if(v != null){ //주식을 보유한 고객이라면...
 				showList(v, portList);
 			}else{ //주식을 보유하지 않은 고객이라면...
@@ -335,7 +332,6 @@ public class Broker implements ActionListener,ItemListener{
 	 * </PRE>
 	 */
 	public void buyStock(){
-
 		String ssn = ssnTf.getText().trim();
 		System.out.println(ssn+"...buyStock()...");
 		String symbol = buyTf.getText().trim();
@@ -362,7 +358,6 @@ public class Broker implements ActionListener,ItemListener{
 		int quantity = Integer.parseInt(sellTf.getText());
 		try{
 			db.sellShares(ssn, symbol, quantity);
-
 		}catch(SQLException e){
 			e.printStackTrace();
 		}catch(RecordNotFoundException e1){
@@ -386,7 +381,6 @@ public class Broker implements ActionListener,ItemListener{
 		String ssn = ssnTf.getText().trim();
 		String address = addrTa.getText().trim();
 		CustomerRec cr = new CustomerRec(ssn, name, address);
-
 		try{
 			db.addCustomer(cr);
 			showCustList(db.getAllCustomer(), custList);
@@ -406,12 +400,10 @@ public class Broker implements ActionListener,ItemListener{
 	 * </PRE>
 	 */
 	public void updateCustomer(){
-
 		String name = nameTf.getText().trim();
 		String ssn = ssnTf.getText().trim();
 		String address = addrTa.getText().trim();
 		CustomerRec cr = new CustomerRec(ssn, name, address);
-
 		try{
 			db.updateCustomer(cr);
 			showCustList(db.getAllCustomer(), custList);
@@ -455,6 +447,7 @@ public class Broker implements ActionListener,ItemListener{
 		buyTf.setText(symbol);
 		stockTf.setText(symbol);
 		priceTf.setText(price);
+		sellTf.setText("1");
 	}
 
 	/**
