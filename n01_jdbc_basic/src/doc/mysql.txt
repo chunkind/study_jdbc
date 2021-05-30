@@ -1,0 +1,34 @@
+* Mysql 기본적인 쿼리.
+
+-모든 테이블 보기.
+SELECT * FROM tabs;
+
+-모든 유저 보기.
+select host, user, authentication_string from user;
+
+-데이터 베이스 사용
+use mysql;
+
+-유저 비밀번호 바꾸기.
+ALTER user 'root'@'localhost' identified with mysql_native_password by 'wnstjd88';
+ALTER USER 'octopus'@'localhost' IDENTIFIED WITH mysql_native_password BY 'octopus@@';
+
+-적용.
+flush privileges;
+
+-데이터베이스 생성.
+CREATE DATABASE octopus default CHARACTER SET UTF8;
+
+-유저 생성.
+CREATE USER 'octopus'@'localhost' IDENTIFIED BY 'octopus@@';
+
+-권한 주기.
+GRANT ALL PRIVILEGES ON octopus.* TO 'octopus'@'localhost';
+
+
+-기본 테이블 생성.
+CREATE TABLE member(
+	id varchar(200),
+	name varchar(200),
+	age int(5)
+);

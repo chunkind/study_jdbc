@@ -26,7 +26,6 @@ CREATE TABLE member(
 
  */
 public class TestApp {
-	
 	static{
 		try{
 			Class.forName(DataBaseInfo.DRIVER_NAME);
